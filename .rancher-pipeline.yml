@@ -3,9 +3,20 @@ stages:
   steps:
   - runScriptConfig:
       image: harbor.yuandingit.com/rancher/busybox:latest
-      shellScript: |-
-        echo ${CICD_GIT_REPO_NAME} > /tmp/${CICD_GIT_REPO_NAME}.log
-
-        echo "${CICD_GIT_URL}" ${CICD_GIT_URL} >>  /tmp/${CICD_GIT_REPO_NAME}.log
+      shellScript: |
+        echo CICD_GIT_REPO_NAME:${CICD_GIT_REPO_NAME} > /tmp/${CICD_GIT_REPO_NAME}.log
+        echo CICD_GIT_URL:${CICD_GIT_URL} >> /tmp/${CICD_GIT_REPO_NAME}.log
+        echo CICD_GIT_COMMIT:${CICD_GIT_COMMIT} >> /tmp/${CICD_GIT_REPO_NAME}.log
+        echo CICD_GIT_REF:${CICD_GIT_REF} >> /tmp/${CICD_GIT_REPO_NAME}.log
+        echo CICD_GIT_BRANCH:${CICD_GIT_BRANCH} >> /tmp/${CICD_GIT_REPO_NAME}.log
+        echo CICD_GIT_TAG:${CICD_GIT_TAG} >> /tmp/${CICD_GIT_REPO_NAME}.log
+        echo CICD_TRIGGER_TYPE:${CICD_TRIGGER_TYPE} >> /tmp/${CICD_GIT_REPO_NAME}.log
+        echo CICD_EVENT:${CICD_EVENT} >> /tmp/${CICD_GIT_REPO_NAME}.log
+        echo CICD_EXECUTION_ID:${CICD_EXECUTION_ID} >> /tmp/${CICD_GIT_REPO_NAME}.log
+        echo CICD_EXECUTION_SEQUENCE:${CICD_EXECUTION_SEQUENCE} >> /tmp/${CICD_GIT_REPO_NAME}.log
+        echo CICD_PIPELINE_ID:${CICD_PIPELINE_ID} >> /tmp/${CICD_GIT_REPO_NAME}.log
+        echo CICD_PROJECT_ID:${CICD_PROJECT_ID} >> /tmp/${CICD_GIT_REPO_NAME}.log
+        echo CICD_CLUSTER_ID:${CICD_CLUSTER_ID} >> /tmp/${CICD_GIT_REPO_NAME}.log
+        echo CICD_LOCAL_REGISTRY:${CICD_LOCAL_REGISTRY} >> /tmp/${CICD_GIT_REPO_NAME}.log
         sleep 360
 timeout: 60
