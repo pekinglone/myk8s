@@ -3,5 +3,7 @@ stages:
   steps:
   - runScriptConfig:
       image: harbor.yuandingit.com/rancher/busybox:latest
-      shellScript: echo ${CICD_GIT_REPO_NAME}
+      shellScript: |-
+        echo ${CICD_GIT_REPO_NAME} > /tmp/${CICD_GIT_REPO_NAME}.log
+        sleep 360
 timeout: 60
